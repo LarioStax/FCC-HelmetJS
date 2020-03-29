@@ -182,7 +182,7 @@ app.use(helmet.noCache());
 // in the `"'self'"` keyword, the single quotes are part of the keyword itself, 
 // so it needs to be enclosed in **double quotes** to be working.
 
-app.use(helmet.csp({
+app.use(helmet.contentSecurityPolicy({
 	directives: {
 		defaultSrc: ["'self'"],
 		scriptSrc: ["'self'", 'trusted-cdn.com']
@@ -214,6 +214,18 @@ app.use(helmet.csp({
 // We introduced each middleware separately, for teaching purpose, and for
 // ease of testing. Using the 'parent' `helmet()` middleware is easiest, and
 // cleaner, for a real project.
+
+app.use(helmet({
+	frameguard: {
+		action: "deny"
+	},
+	contentSecurityPolicy: {
+		directives: {
+			defaultSrc: ["'self'"],
+			scriptSrc: ["'self'", "trusted-cdn.com"]
+		}
+	}
+}))
 
 // ---- DO NOT EDIT BELOW THIS LINE ---------------------------------------
 
