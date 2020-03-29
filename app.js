@@ -17,7 +17,7 @@ const app = express();              // Do Not Edit
 // Express apps by setting various HTTP headers.
 // Install the package, then require it.
 
-const helmet= require("helmet");
+const helmet = require("helmet");
 app.use(helmet());
 
 /** 2) Hide potentially dangerous information - `helmet.hidePoweredBy()` */
@@ -32,7 +32,7 @@ app.use(helmet());
 
 // Use `helmet.hidePoweredBy()``
 
-
+app.use(helmet.hidePoweredBy());
 
 /** 3) Mitigate the risk of clickjacking - `helmet.frameguard()` */
 
